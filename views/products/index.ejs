@@ -1,0 +1,64 @@
+<%- include('../partials/sidebar.ejs'); %>
+    <main class="">
+        <div class="grid mb-4 pb-10 px-8 mx-4 rounded-3xl bg-white border-4 border-green-400">
+            <div class="py-5">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <!--Boton nuevo   -->
+                    <div class="space-x-8">
+                        <a href="/products/add" class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer" >
+                            <i class="fa-solid fa-plus"></i></i> Nuevo
+                        </a>
+                    </div>
+                    <!--Tabla lista de items   -->
+                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <table class="w-full divide-y divide-gray-200 table-auto">
+                          <thead class="bg-indigo-500 text-white">
+                            <tr class="text-left text-xs font-bold  uppercase">
+                              <td scope="col" class="px-6 py-3">ID</td>
+                              <td scope="col" class="px-6 py-3">Nombre</td>
+                              <td scope="col" class="px-6 py-3">Descripccion</td>
+                              <td scope="col" class="px-6 py-3">Modelo</td>
+                              <td scope="col" class="px-6 py-3">stock</td>
+                              <td scope="col" class="px-6 py-3">precio </td>
+                              <td scope="col" class="px-6 py-3">imagen </td>
+                              <td scope="col" class="px-6 py-3">Categoria </td>
+                              <td scope="col" class="px-6 py-3">Proveedor </td>
+                              <td scope="col" class="px-6 py-3 text-center">Opciones</td>
+                            </tr>
+                          </thead>
+                          <tbody class="divide-y divide-gray-200 dark:text-gray-400">
+                            <% for(var i = 0; i< data.length; i++) { %>
+                                <tr class="text-sm font-medium text-gray-900">
+                                  <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-indigo-500 text-white">
+                                      <%= data[i].id %>
+                                    </span>
+                                  </td>
+                                  <td class="px-6 py-4 dark:text-gray-400"><%= data[i].nombre%></td>
+                                  <td class="px-6 py-4 dark:text-gray-400"><%= data[i].descripcion%></td>
+                                  <td class="px-6 py-4 dark:text-gray-400"><%= data[i].modelo%></td>
+                                  <td class="px-6 py-4 dark:text-gray-400"><%= data[i].stock%></td>
+                                  <td class="px-6 py-4 dark:text-gray-400"><%= data[i].precio%></td>
+                                  <td class="px-6 py-4 dark:text-gray-400"><%= data[i].imagen%></td>
+                                  <td class="px-6 py-4 dark:text-gray-400"><%= data[i].CATEGORIAS_id%></td>
+                                  <td class="px-6 py-4 dark:text-gray-400"><%= data[i].PROVEEDORES_id%></td>
+                                  <td class="px-6 py-4 text-right">
+                                    <a href="../clientes/edit/<%=data[i].id%>" class="mr-1 bg-green-600 text-white rounded px-2 py-2 hover:bg-green-400 text-xs">
+                                      <i class="fa-solid fa-pen-to-square"></i> Editar
+                                    </a>
+                                    <a href="../clientes/delete/<%=data[i].id%>" onclick="return confirm('Are You sure?')"  class="bg-red-600 text-white rounded px-2 py-2 hover:bg-red-400 text-xs">
+                                      <i class="fa-solid fa-trash-can"></i> Eliminar
+                                    </a>
+                                  </td>
+                                </tr>
+                                <% } %>
+                            
+                          </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+<%- include('../partials/footer.ejs'); %>
