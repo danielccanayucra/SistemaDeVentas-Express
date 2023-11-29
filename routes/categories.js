@@ -12,9 +12,8 @@ router.get('/', function(req, res, next) {
         res.render('categories/index',{data:rows});
     }
   });
-
-  
 });
+
 
 /* VER FORMULARIO ADD*/
 router.get('/add', function(req, res, next) {    

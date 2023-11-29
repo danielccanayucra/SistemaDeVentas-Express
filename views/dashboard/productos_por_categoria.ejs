@@ -1,0 +1,75 @@
+<%- include('../partials/sidebar.ejs'); %>
+<main class="">
+    <div class="grid mb-4 pb-10 px-8 mx-4 rounded-3xl bg-gray-100 border-4 border-green-400">
+
+        <div class="grid grid-cols-12 gap-6">
+            <div class="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
+                <div class="col-span-12 mt-8">
+                    <div class="flex items-center h-10 intro-y">
+                        <h2 class="mr-5 text-lg font-medium truncate">PRODUCTOS - <%=categoria_name%> - <%=categoria_id%> </h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-12 gap-6 mt-5">
+                        <% for(var i = 0; i< productos_datas.length; i++) { %>
+                        <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                        >
+                            <div class="p-5">
+                                <div class="ml-2 w-full flex-1">
+                                    <div>
+                                        <div class="mt-6 w-fit mx-auto">
+                                            <img src="/images/logo de muebles de cocina.jpg" class="rounded-full w-28 " alt="profile picture" srcset="">
+                                        </div>
+
+                                        <div class=" text-center mt-1 text-base text-gray-600"><%= productos_datas[i].nombre%></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+function data() {
+
+return {
+   
+    isSideMenuOpen: false,
+    toggleSideMenu() {
+        this.isSideMenuOpen = !this.isSideMenuOpen
+    },
+    closeSideMenu() {
+        this.isSideMenuOpen = false
+    },
+    isNotificationsMenuOpen: false,
+    toggleNotificationsMenu() {
+        this.isNotificationsMenuOpen = !this.isNotificationsMenuOpen
+    },
+    closeNotificationsMenu() {
+        this.isNotificationsMenuOpen = false
+    },
+    isProfileMenuOpen: false,
+    toggleProfileMenu() {
+        this.isProfileMenuOpen = !this.isProfileMenuOpen
+    },
+    closeProfileMenu() {
+        this.isProfileMenuOpen = false
+    },
+    isPagesMenuOpen: false,
+    togglePagesMenu() {
+        this.isPagesMenuOpen = !this.isPagesMenuOpen
+    },
+   
+}
+}
+</script>
+
+</body>
+
+</html>

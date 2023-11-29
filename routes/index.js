@@ -4,8 +4,20 @@ var dbConn  = require('../lib/db');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  dbConn.query('SELECT * FROM productos ', function(err, rows, fields) {
+    if(err) throw err
+   
+    else {
+        // render to edit.ejs
+        res.render('index', {
+            title: 'Express',
+            productos_datas:rows,
+            
+        })
+    }
 });
+});
+
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {
@@ -36,19 +48,6 @@ router.post('/dashboard', function(req, res, next) {
 });
 
 /* GET login page. */
-router.get('/dashboard', function(req, res, next) {
-  if(!req.session.loggedin){
-    res.redirect('/login');
-  }else{
-    dbConn.query('SELECT count(id) as cantidad FROM categorias',function(err,rows)     {
-      if(err) {
-          req.flash('error', err); 
-      } else {
-        res.render('dashboard',{data:rows});
-      }
-    });
-  }
-});
 
 router.get('/logout',function(req,res){
   req.session.destroy();
