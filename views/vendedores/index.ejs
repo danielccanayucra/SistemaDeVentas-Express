@@ -5,7 +5,7 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <!--Boton nuevo   -->
                     <div class="space-x-8">
-                        <a href="/clientes/add" class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer" >
+                        <a href="/vendedores/add" class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer" >
                             <i class="fa-solid fa-plus"></i></i> Nuevo
                         </a>
                     </div>
@@ -43,10 +43,10 @@
                                   <td class="px-6 py-4 dark:text-gray-400"><%= data[i].direccion%></td>
                                   <td class="px-6 py-4 dark:text-gray-400"><%= data[i].USUARIOS_id%></td>
                                   <td class="px-6 py-4 text-right">
-                                    <a href="../clientes/edit/<%=data[i].id%>" class="mr-1 bg-green-600 text-white rounded px-2 py-2 hover:bg-green-400 text-xs">
+                                    <a href="../vendedores/edit/<%=data[i].id%>" class="mr-1 bg-green-600 text-white rounded px-2 py-2 hover:bg-green-400 text-xs">
                                       <i class="fa-solid fa-pen-to-square"></i> Editar
                                     </a>
-                                    <a href="../clientes/delete/<%=data[i].id%>" onclick="return confirm('Are You sure?')"  class="bg-red-600 text-white rounded px-2 py-2 hover:bg-red-400 text-xs">
+                                    <a href="../vendedores/delete/<%=data[i].id%>" onclick="return confirm('Are You sure?')"  class="bg-red-600 text-white rounded px-2 py-2 hover:bg-red-400 text-xs">
                                       <i class="fa-solid fa-trash-can"></i> Eliminar
                                     </a>
                                   </td>
