@@ -7,20 +7,20 @@
                         <div class="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
                             <div class="col-span-12 mt-8">
                                 <div class="flex items-center h-10 intro-y">
-                                    <h2 class="mr-5 text-lg font-medium truncate">CATEGORIAS - <%= user_name%>- <%= user.name%> - <%= user.edad%></h2>
+                                    <h2 class="mr-5 text-lg font-medium truncate text-blue-700">CATEGORIAS</h2>
                                 </div>
+                                <hr class=" my-5">
                                 
                                 <div class="grid grid-cols-12 gap-6 mt-5">
                                     <% for(var i = 0; i< categorias_data.length; i++) { %>
-                                    <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                                    <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white "
                                         href="../dashboard/<%=categorias_data[i].nombre%>/productos?id=<%=categorias_data[i].id%>">
                                         <div class="p-5">
                                             <div class="ml-2 w-full flex-1">
                                                 <div>
                                                     <div class="mt-6 w-fit mx-auto">
-                                                        <img src="/public/<%= categorias_data[i].logo%>" class="rounded-full w-28 " alt="profile picture" srcset="">
+                                                        <img src="/public/<%= categorias_data[i].logo%>" class="rounded-full w-28 bor border-4 border-blue-200" alt="profile picture" srcset="">
                                                     </div>
-                                                    "<%= categorias_data[i].logo%>"
                                                     <div class=" text-center mt-1 text-base text-gray-600"><%= categorias_data[i].nombre%></div>
                                                 </div>
                                             </div>

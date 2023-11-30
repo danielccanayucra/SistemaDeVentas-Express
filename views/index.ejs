@@ -37,15 +37,15 @@
             <!-- LADO IZQUIERDO -->
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                <img class="h-16 w-35 rounded-lg" src="/images/ADLOGOOFICIAL.png" alt="AD LOGO">
+                <img class="h-32 w-35 rounded-lg " src="images/logo.png" alt="AD LOGO">
             </div>
         </div>
             <div class="hiddenx sm:ml-6 sm:block">
               <div class="flex space-x-3 ">
                 <a href="#" class="text-white  hover:text-yellow-600 rounded-md px-3 py-2 text-sm font-medium">Inicio</a>
-                <a href="#" class="text-white  hover:text-yellow-600 rounded-md px-3 py-2 text-sm font-medium">Salas, Dormitorios y Más</a>
+                <a href="/#productos_id" class="text-white  hover:text-yellow-600 rounded-md px-3 py-2 text-sm font-medium">Salas, Dormitorios y Más</a>
                 <a href="#" class="text-white  hover:text-yellow-600 rounded-md px-3 py-2 text-sm font-medium">Nuestros Locales</a>
-                <a href="#" class="text-white  hover:text-yellow-600 rounded-md px-3 py-2 text-sm font-medium">Contáctanos</a>
+                <a href="" class="text-white  hover:text-yellow-600 rounded-md px-3 py-2 text-sm font-medium">Contáctanos</a>
               </div>
             </div>  
           </div>
@@ -121,7 +121,7 @@
       <!--Third item-->
       <div
         class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-        data-te-carousel-item style="backface-visibility: hidden; height: 100%">
+        data-te-carousel-item style="backface-visibility: hidden; ">
         <img src="images/oferta3.png" height="100%"  class="block w-full" alt="..." style="height: 100%; object-fit: cover;"/>
         <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
           <h5 class="text-xl">Third slide label</h5>
@@ -213,9 +213,9 @@
             <div class="rounded overflow-hidden shadow-lg">
               <img class="w-full" src="/public/<%= productos[i].imagen%>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2">$<%= productos[i].precio%>
+                <div class="text-red-600 font-bold text-5xl mb-2">$<%= productos[i].precio%>
                 </div>
-                <div class="font-bold text-xl mb-2">
+                <div class=" text-center font-bold text-xl mb-2">
                   <%= productos[i].nombre%>
                 </div>
                 <p class="text-gray-700 text-base">
@@ -223,12 +223,12 @@
                 </p>
               </div>
               <div class="px-6 pt-4 pb-2">
-                <span
-                  class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">proforma</span>
-                <span
-                  class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                <span
-                  class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                <a
+                  class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">proforma</a>
+                  <button    tabindex="0" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    Agregar
+                  </button>
+                
               </div>
             </div>
             <% } %>
@@ -242,7 +242,7 @@
 
 
   <!--Footer container-->
-<footer
+<footer id="footer"
 class="flex flex-col items-center bg-neutral-900 text-center text-white">
 <div class="container px-6 pt-6">
   <div class="mb-6 flex justify-center">
