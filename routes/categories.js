@@ -1,6 +1,9 @@
 var express=require('express');
 var router=express.Router();
 var dbConn=require('../lib/db');
+var multer=require('multer')
+const path = require('path');
+
 
 /* listar*/
 router.get('/', function(req, res, next) {
@@ -22,9 +25,21 @@ router.get('/add', function(req, res, next) {
       nombre: '',     
   })
 })
-/* INSERTAR EN BASE DE DATOS*/
-router.post('/add', function(req, res, next) {    
+// Configura multer para la subida de archivos
+const storage = multer.diskStorage({
+    destination: 'uploads', // Ruta para almacenar las imágenes
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname) );
 
+    }
+  });
+  
+  const upload = multer({
+    storage: storage
+  }) // Nombre del campo del formulario
+
+/* INSERTAR EN BASE DE DATOS*/
+router.post('/add', upload.single('logo'), function(req, res, next) {    
   let nombre = req.body.nombre;
   let errors = false;
 
@@ -35,29 +50,34 @@ router.post('/add', function(req, res, next) {
           nombre: nombre,
       })
   }
+  
 
   // if no error
   if(!errors) {
+    if (req.file === undefined) {
+        return res.status(400).send('No se ha seleccionado ningún archivo');
+      } else {
+        console.log(req.file); // Verifica el contenido de req.file para asegurarte de que contiene la información del archivo
+        const filename = req.file.filename; // Ruta donde se ha guardado la imagen
+    
+            // Guarda la referencia de la imagen y la descripción en la base de datos
+            dbConn.query('INSERT INTO categorias SET ?', {nombre,logo:filename}, function(err, result) {
+                //if(err) throw err
+                if (err) {
+                    req.flash('error', err)
+                     
+                    // render to add.ejs
+                    res.render('categories/add', {
+                        nombre:nombre,
+                    })
+                } else {                
+                    req.flash('success', 'Book successfully added');
+                    res.redirect('/categories');
+                }
+            })
+      }
 
-      var form_data = {
-          nombre: nombre,
-      }
       
-      // insert query
-      dbConn.query('INSERT INTO categorias SET ?', form_data, function(err, result) {
-          //if(err) throw err
-          if (err) {
-              req.flash('error', err)
-               
-              // render to add.ejs
-              res.render('categories/add', {
-                  nombre: form_data.nombre,
-              })
-          } else {                
-              req.flash('success', 'Book successfully added');
-              res.redirect('/categories');
-          }
-      })
   }
 })
 
@@ -87,7 +107,7 @@ router.get('/edit/(:id)', function(req, res, next) {
 
 
 /* ACTUALIZAR FORMULARIO DE BASE DE DATOS*/
-router.post('/update/:id', function(req, res, next) {
+router.post('/update/:id', upload.single('logo'), function(req, res, next) {
 
   let id = req.params.id;
   let nombre = req.body.nombre;
@@ -106,28 +126,31 @@ router.post('/update/:id', function(req, res, next) {
   }
 
   // if no error
-  if( !errors ) {   
-
-      var form_data = {
-          nombre: nombre,
-      }
-      // update query
-      dbConn.query('UPDATE categorias SET ? WHERE id = ' + id, form_data, function(err, result) {
-          //if(err) throw err
-          if (err) {
-              // set flash message
-              req.flash('error', err)
-              // render to edit.ejs
-              res.render('books/edit', {
-                  id: req.params.id,
-                  nombre: form_data.nombre,
-              })
-          } else {
-              req.flash('success', 'Registro successfully updated');
-              res.redirect('/categories');
-          }
-      })
-  }
+  if(!errors) {
+    if (req.file === undefined) {
+        return res.status(400).send('No se ha seleccionado ningún archivo');
+      } else {
+        console.log(req.file); // Verifica el contenido de req.file para asegurarte de que contiene la información del archivo
+        const filename = req.file.filename; // Ruta donde se ha guardado la imagen
+    
+            // Guarda la referencia de la imagen y la descripción en la base de datos
+            dbConn.query('UPDATE categorias SET ? WHERE id ='+id, {nombre,logo:filename}, function(err, result) {
+                //if(err) throw err
+                if (err) {
+                    // set flash message
+                    req.flash('error', err)
+                    // render to edit.ejs
+                    res.render('categorias/edit', {
+                        id: req.params.id,
+                        nombre:nombre,
+                    })
+                } else {
+                    req.flash('success', 'Registro successfully updated');
+                    res.redirect('/categories');
+                }
+            })
+      }
+    }
 })
 /* ELIMINAR REGISTRO DE BASE DE DATOS*/
 router.get('/delete/(:id)', function(req, res, next) {

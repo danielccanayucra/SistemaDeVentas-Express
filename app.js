@@ -50,6 +50,7 @@ app.use('/clientes', clientesRouter);
 app.use('/vendedores', vendedoresRouter);
 app.use('/products', productsRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/public', express.static('uploads'));
 
 
 // catch 404 and forward to error handler

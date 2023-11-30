@@ -2,7 +2,7 @@
     <main class="pt-6">
         <div class="grid mb-4 pb-10 px-8 mx-4 rounded-3xl bg-white border-4 border-green-400">
             <h1 class="mt-6 font-bold text-xl">REGISTRO NUEVA CATEGORIA</h1>
-            <form action="/categories/add" method="POST" class="w-full max-w-lg mt-6">
+            <form action="/categories/add" method="POST" enctype="multipart/form-data" class="w-full max-w-lg mt-6">
                 <div class=" -mx-3 mb-6">
                     <% if (messages.error) { %>
                         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
@@ -23,7 +23,7 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     LOGO
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="" type="file">
+                    <input  name="logo" type="file" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                   </div>
                 </div>
                 <div class="md:flex md:items-center">

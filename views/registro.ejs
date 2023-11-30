@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  
+  <body>
+
+<!-- component -->
+<div class="relative flex h-full w-full">
+  <div class="h-screen w-1/2 bg-black">
+    <div class="mx-auto flex h-full w-2/3 flex-col justify-center text-white xl:w-1/2">
+      <div>
+        <p class="text-2xl">BIENVENIDOS</p>
+        <p>por favor inicia sesión para continuar||</p>
+      </div>
+      <div class="my-6">
+        <button class="flex w-full justify-center rounded-3xl border-none bg-white p-1 text-black hover:bg-gray-200 sm:p-2"><img src="https://freesvg.org/img/1534129544.png" class="mr-2 w-6 object-fill" />Sign in with Google</button>
+      </div>
+      <div>
+        <fieldset class="border-t border-solid border-gray-600">
+          <legend class="mx-auto px-2 text-center text-sm">O inicie sesión a través de nuestro sistema seguro</legend>
+        </fieldset>
+      </div>
+      <div class="mt-10">
+        <form action="/dashboard" method="POST">
+          <div>
+            <label class="mb-2.5 block font-extrabold" for="email">Ingrese su email</label>
+            <input type="text" id="email" name="email"  class="inline-block w-full rounded-full bg-white p-2.5 leading-none text-black placeholder-indigo-900 shadow placeholder:opacity-30" placeholder="mail@user.com" />
+          </div>
+          <div class="mt-4">
+            <label class="mb-2.5 block font-extrabold" for="email">Ingrese su contraseña</label>
+            <input type="password" id="email" name="password" placeholder="Password" class="inline-block w-full rounded-full bg-white p-2.5 leading-none text-black placeholder-indigo-900 shadow" />
+          </div>
+          <div class="mt-4">
+            <label class="mb-2.5 block font-extrabold" for="email">Vuelva a ingresar su contraseña</label>
+            <input type="password" id="email" name="password" placeholder="Password" class="inline-block w-full rounded-full bg-white p-2.5 leading-none text-black placeholder-indigo-900 shadow" />
+          </div>
+          <div class="mt-4 flex w-full flex-col justify-between sm:flex-row">
+            <!-- Remember me -->
+            <div><input type="checkbox" id="remember" /><label for="remember" class="mx-2 text-sm">Acuérdate de mí</label></div>
+            <!-- Forgot password -->
+          </div>
+          <div class="my-10">
+            <button  type="submit" class="w-full rounded-full bg-orange-600 p-5 hover:bg-orange-800">Registrar</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="h-screen w-1/2 bg-blue-600">
+    <img src="https://fotos.perfil.com/2022/10/21/trim/1280/720/todoenmuebles2022-1440141.jpg" class="h-full w-full" />
+  </div>
+</div>
+
+  </body>
+</html>
